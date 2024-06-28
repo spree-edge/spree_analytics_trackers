@@ -4,6 +4,7 @@ unless spree_version >= Gem::Version.create('3.4.0') && spree_version < Gem::Ver
     virtual_path: 'spree/checkout/edit',
     name: 'add_segment_checkout_step_viewed_to_checkout_edit',
     insert_after: '[data-hook="checkout_content"]',
+    original: '2044b21d3b41d338d17e54efb9304d851c9427e6',
     text: <<-HTML
       <%= render partial: 'spree/shared/trackers/segment/checkout_step_viewed', formats: :js %>
     HTML
@@ -13,6 +14,7 @@ unless spree_version >= Gem::Version.create('3.4.0') && spree_version < Gem::Ver
     virtual_path: 'spree/checkout/edit',
     name: 'add_ga_checkout_step_viewed_to_checkout_edit',
     insert_after: '[data-hook="checkout_content"]',
+    original: '2044b21d3b41d338d17e54efb9304d851c9427e6',
     text: <<-HTML
       <%= render partial: 'spree/shared/trackers/google_analytics/checkout_step_viewed', formats: :js %>
     HTML
