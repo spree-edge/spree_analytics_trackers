@@ -3,6 +3,7 @@ unless spree_version >= Gem::Version.create('3.3.0') && spree_version < Gem::Ver
   Deface::Override.new(
     virtual_path: 'spree/orders/show',
     name: 'add_order_complete_to_orders_show',
+    original: '91777d086e3b2f337e2761f702f1711da6975a6b',
     insert_before: "#order_summary",
     text: <<-HTML
       <%= render partial: 'spree/shared/trackers/segment/order_complete', formats: :js %>
