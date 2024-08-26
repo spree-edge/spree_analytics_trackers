@@ -8,7 +8,7 @@
           });
         <% end %>
         gtag('event', 'page_view', {
-          page_location: event.detail.url,
+          page_location: event.data.url,
           page_path: window.location.pathname,
           page_title: window.document.title
         });
