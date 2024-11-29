@@ -25,7 +25,7 @@ module Spree
         hash[:image_url] = default_image_for_product_or_variant(product)
       end.merge(optional).to_json.html_safe
     end
-    
+
     def product_for_google(product, optional = {})
       cache_key = [
         'spree-google-product',
@@ -41,7 +41,7 @@ module Spree
           item_category: product.category&.name,
           item_brand: product.brand&.name,
           price: product.price_in(current_currency).amount&.to_f,
-          currency: current_currency,
+          currency: current_currency
         }.merge(optional).to_json.html_safe
       end
     end

@@ -7,8 +7,10 @@ module SpreeAnalyticsTrackers
         javascripts_path = 'vendor/assets/javascripts/spree/frontend/all.js'
         return unless File.file?(javascripts_path)
 
-        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/add_to_cart_analytics\n"
-        append_file 'vendor/assets/javascripts/spree/frontend/all.js', "//= require spree/frontend/remove_from_cart_analytics\n"
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js',
+                    "//= require spree/frontend/add_to_cart_analytics\n"
+        append_file 'vendor/assets/javascripts/spree/frontend/all.js',
+                    "//= require spree/frontend/remove_from_cart_analytics\n"
       end
 
       def add_migrations
@@ -16,7 +18,8 @@ module SpreeAnalyticsTrackers
       end
 
       def run_migrations
-        run_migrations = options[:auto_run_migrations] || ['', 'y', 'Y'].include?(ask 'Would you like to run the migrations now? [Y/n]')
+        run_migrations = options[:auto_run_migrations] || ['', 'y',
+                                                           'Y'].include?(ask('Would you like to run the migrations now? [Y/n]'))
         if run_migrations
           run 'bundle exec rake db:migrate'
         else

@@ -15,7 +15,7 @@ describe SpreeAnalyticsTrackers::Segment::OrderPresenter, type: :presenter do
         discount: order.promo_total&.to_f,
         coupon: order.promo_code,
         currency: order.currency,
-        products: order.line_items.map{ |line_item| 
+        products: order.line_items.map do |line_item|
           {
             product_id: line_item.product_id&.to_s,
             sku: line_item.sku&.to_s,
@@ -23,7 +23,7 @@ describe SpreeAnalyticsTrackers::Segment::OrderPresenter, type: :presenter do
             price: line_item.price&.to_f,
             quantity: line_item.quantity
           }
-        }
+        end
       }.to_json
     end
 

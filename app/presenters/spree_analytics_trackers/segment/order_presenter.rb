@@ -3,7 +3,7 @@ module SpreeAnalyticsTrackers
     class OrderPresenter < SpreeAnalyticsTrackers::BasePresenter
       private
 
-      def serialize_resource(resource, options = {})
+      def serialize_resource(resource, _options = {})
         {
           order_id: resource.number.to_s,
           total: resource.total&.to_f,
@@ -15,8 +15,6 @@ module SpreeAnalyticsTrackers
           products: resource.line_items.map { |li| serialize_line_item(li) }
         }
       end
-
-      private
 
       def serialize_line_item(line_item)
         {

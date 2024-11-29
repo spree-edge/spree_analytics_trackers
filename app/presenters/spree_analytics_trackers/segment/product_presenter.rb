@@ -18,13 +18,11 @@ module SpreeAnalyticsTrackers
         end.merge(options)
       end
 
-      def segment_image_url(hash, options)
-        
-      end
+      def segment_image_url(hash, options); end
 
       def brand_name
         resource.vendor.name if defined?(SpreeMultiVendor) && resource.defined?(:vendor) && resource.vendor.present?
-        
+
         resource.brand&.name
       end
 
