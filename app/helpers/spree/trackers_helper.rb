@@ -11,7 +11,7 @@ module Spree
       product_hash = Rails.cache.fetch(cache_key) do
         {
           product_id: product.id,
-          sku: product.sku,
+          sku: product.id,
           category: product.category&.name,
           name: product.name,
           brand: product.brand&.name,
@@ -36,7 +36,7 @@ module Spree
 
       Rails.cache.fetch(cache_key) do
         {
-          item_id: product.sku,
+          item_id: product.id,
           item_name: product.name,
           item_category: product.category&.name,
           item_brand: product.brand&.name,
@@ -60,7 +60,7 @@ module Spree
       Rails.cache.fetch(cache_key) do
         product = line_item.product
         {
-          id: variant.sku,
+          id: variant.id,
           name: variant.name,
           category: product.category&.name,
           variant: variant.options_text,
