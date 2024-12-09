@@ -8,7 +8,7 @@ module Spree
           section = root.items.find { |s| s.key == 'integrations' }
           return unless section
 
-          section.items << ItemBuilder.new(Spree.t(:analytics), admin_trackers_path).
+          section.items << ItemBuilder.new('analytics', admin_trackers_path).
             with_manage_ability_check(Spree::Tracker).
             with_match_path('/analytics').
             build
