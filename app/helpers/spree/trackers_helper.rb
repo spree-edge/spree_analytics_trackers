@@ -11,7 +11,7 @@ module Spree
       product_hash = Rails.cache.fetch(cache_key) do
         {
           product_id: product.id,
-          sku: product.id,
+          sku: product.sku || product.id,
           category: product.category&.name,
           name: product.name,
           brand: product.brand&.name,
