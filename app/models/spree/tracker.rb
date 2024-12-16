@@ -1,11 +1,11 @@
 module Spree
   class Tracker < Spree::Base
-    TRACKING_ENGINES = %i(google_analytics segment).freeze
+    TRACKING_ENGINES = %i[google_analytics segment].freeze
     enum engine: TRACKING_ENGINES
 
     after_commit :clear_cache
 
-    validates :analytics_id, presence: true, uniqueness: { scope: [:engine, :store_id], case_sensitive: false }
+    validates :analytics_id, presence: true, uniqueness: { scope: %i[engine store_id], case_sensitive: false }
     validates :store, presence: true
 
     scope :active, -> { where(active: true) }
@@ -19,7 +19,9 @@ module Spree
       tracker = Rails.cache.fetch("current_tracker/#{engine}/#{store.id}") do
         active.find_by(store: store, engine: engine)
       end
-      tracker.analytics_id.present? ? tracker : nil if tracker
+      return unless tracker
+
+      tracker.analytics_id.present? ? tracker : nil
     end
 
     def clear_cache

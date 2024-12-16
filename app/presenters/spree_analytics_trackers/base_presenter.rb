@@ -7,7 +7,7 @@ module SpreeAnalyticsTrackers
       @options = options
     end
 
-    def to_json
+    def to_json(*_args)
       serialize_resource(@resource, @options).to_json
     end
   end

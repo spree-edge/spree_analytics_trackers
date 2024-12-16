@@ -240,9 +240,7 @@ describe 'Visiting Products', type: :feature, js: true do
 
       expect(page).to have_content('$69.99')
 
-      if Spree.version.to_f > 4.1
-        expect(page).to have_content('$169.99')
-      end
+      expect(page).to have_content('$169.99') if Spree.version.to_f > 4.1
     end
 
     it 'does not show pre sales price when it is bigger than price' do

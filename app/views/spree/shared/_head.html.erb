@@ -1,0 +1,19 @@
+<title><%= title %></title>
+<%= render partial: 'spree/shared/trackers/segment/initializer', formats: :js %>
+<%= render partial: 'spree/shared/trackers/segment/page_viewed', formats: :js %>
+<%= render partial: 'spree/shared/trackers/google_analytics/initializer', formats: :js %>
+<%= render partial: 'spree/shared/trackers/google_analytics/page_viewed', formats: :js %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%== og_meta_data_tags %>
+<%== meta_data_tags %>
+<%== meta_robots %>
+<%= canonical_tag(current_store.url) %>
+<%= favicon_link_tag(spree_favicon_path) %>
+<%= stylesheet_link_tag 'spree/frontend/all', media: 'screen', data: { turbo_track: 'reload' } %>
+<%= csrf_meta_tags %>
+
+<%= javascript_importmap_tags('application-spree-frontend') %>
+<%= render 'spree/shared/paths' %>
+<%= render 'spree/shared/locale_and_currency' %>
+<%= javascript_include_tag 'spree/frontend/all', defer: true, data: { turbo_track: 'reload' } %>
+<%= yield :head %>

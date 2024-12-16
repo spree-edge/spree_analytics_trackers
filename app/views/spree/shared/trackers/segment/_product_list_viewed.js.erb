@@ -1,11 +1,11 @@
-<% if segment_enabled? && defined?(products) && products.present? %>
+<% if segment_enabled? && defined?(@products) && @products.present? %>
   <script>
     window.addEventListener('turbo:load', function() {
       if (typeof analytics !== 'undefined') {
         var segmentProductListViewedJson = {
           category: '<%= @taxon&.name %>',
           products: [
-            <% products.each_with_index do |product, index| %>
+            <% @products.each_with_index do |product, index| %>
               <%= product_for_segment(product, position: index+1, image: default_image_for_product_or_variant(product)) %>,
             <% end %>
           ]

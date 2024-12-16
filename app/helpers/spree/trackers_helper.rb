@@ -11,7 +11,7 @@ module Spree
       product_hash = Rails.cache.fetch(cache_key) do
         {
           product_id: product.id,
-          sku: product.sku,
+          sku: product.sku || product.id,
           category: product.category&.name,
           name: product.name,
           brand: product.brand&.name,
@@ -25,7 +25,7 @@ module Spree
         hash[:image_url] = default_image_for_product_or_variant(product)
       end.merge(optional).to_json.html_safe
     end
-    
+
     def product_for_google(product, optional = {})
       cache_key = [
         'spree-google-product',
@@ -36,12 +36,12 @@ module Spree
 
       Rails.cache.fetch(cache_key) do
         {
-          item_id: product.sku,
+          item_id: product.id,
           item_name: product.name,
           item_category: product.category&.name,
           item_brand: product.brand&.name,
           price: product.price_in(current_currency).amount&.to_f,
-          currency: current_currency,
+          currency: current_currency
         }.merge(optional).to_json.html_safe
       end
     end
@@ -60,7 +60,7 @@ module Spree
       Rails.cache.fetch(cache_key) do
         product = line_item.product
         {
-          id: variant.sku,
+          id: variant.id,
           name: variant.name,
           category: product.category&.name,
           variant: variant.options_text,

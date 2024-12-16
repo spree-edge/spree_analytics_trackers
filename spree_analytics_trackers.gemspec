@@ -1,4 +1,4 @@
-lib = File.expand_path('../lib/', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
 require 'spree_analytics_trackers/version'
@@ -21,11 +21,10 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 4.1.0', '< 5.0'
-  s.add_dependency 'spree_core', spree_version
+  spree_version = '>= 4.8.0', '< 5.0'
   s.add_dependency 'spree_backend', spree_version
+  s.add_dependency 'spree_core', spree_version
   s.add_dependency 'spree_extension'
-  s.add_dependency 'deface', '~> 1.0'
 
   s.add_development_dependency 'spree_dev_tools'
 end
