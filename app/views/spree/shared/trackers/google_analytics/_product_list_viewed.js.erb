@@ -1,12 +1,12 @@
-<% if ga_enabled? && defined?(products) && products.present? %>
+<% if ga_enabled? && defined?(@products) && @products.present? %>
   <script>
-    window.addEventListener('turbolinks:load', function() {
+    window.addEventListener('turbo:load', function() {
       if (typeof gtag !== 'undefined') {
         gtag('event', 'view_item_list', {
           item_list_id: '<%= @taxon&.id %>',
           item_list_name: '<%= @taxon&.name %>',
           items: [
-            <% products.each_with_index do |product, index| %>
+            <% @products.each_with_index do |product, index| %>
               <%= product_for_google(product, index: index+1) %>,
             <% end %>
           ]

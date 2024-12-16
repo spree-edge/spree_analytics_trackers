@@ -53,6 +53,8 @@ end
     <% end %>
   </div>
   <%= render partial: 'spree/shared/trackers/segment/checkout_step_viewed', formats: :js %>
+  <%= render partial: 'spree/shared/trackers/google_analytics/checkout_step_viewed', formats: :js %>
+  <%= render partial: 'spree/shared/trackers/google_analytics/begin_checkout', formats: :js %>
 </div>
 
 <script>

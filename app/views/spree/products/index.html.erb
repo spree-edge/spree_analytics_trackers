@@ -1,7 +1,9 @@
 <% permitted_params = permitted_products_params %>
 <% products_empty = @products.empty? %>
 
+<%= render partial: 'spree/shared/trackers/google_analytics/product_list_viewed', formats: :js %>
 <%= render partial: 'spree/shared/trackers/segment/products_searched', formats: :js %>
+<%= render partial: 'spree/shared/trackers/segment/product_list_viewed', formats: :js %>
 <div data-hook="search_results">
   <% if products_empty %>
     <% if permitted_params[:keywords].present? && permitted_params.to_h.one? %>
