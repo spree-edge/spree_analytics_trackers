@@ -41,7 +41,7 @@ module Spree
           item_category: product.category&.name,
           item_brand: product.brand&.name,
           price: product.price_in(current_currency).amount&.to_f,
-          currency: current_currency,
+          currency: current_currency
         }.merge(optional).to_json.html_safe
       end
     end
